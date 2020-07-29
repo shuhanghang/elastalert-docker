@@ -1,0 +1,75 @@
+# Alert when the rate of events exceeds a threshold
+
+# (Optional)
+# Elasticsearch host
+#es_host: 
+
+# (Optional)
+# Elasticsearch port
+#es_port: 9200
+
+# (OptionaL) Connect with SSL to Elasticsearch
+#use_ssl: True
+
+# (Optional) basic-auth username and password for Elasticsearch
+#es_username: someusername
+#es_password: somepassword
+
+# (Required)
+# Rule name, must be unique
+name: Example frequency rule
+
+# (Required)
+# Type of alert.
+# the frequency rule type alerts when num_events events occur with timeframe time
+type: frequency
+
+# (Required)
+# Index to search, wildcard supported
+index: logstash*
+
+# (Required, frequency specific)
+# Alert when this many documents matching the query occur within a timeframe
+num_events: 1
+
+# (Required, frequency specific)
+# num_events must occur within this amount of time to trigger an alert
+timeframe:
+  hours: 24
+
+# (Required)
+# A list of Elasticsearch filters used for find events
+# These filters are joined with AND and nested in a filtered query
+# For more info: http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl.html
+filter:
+- query_string:
+    query: " "
+# (Required)
+# The alert is use when a match is found
+
+# email configure
+alert:
+- "email"
+email_format: html
+alert_text_type: alert_text_only
+alert_subject:  "ElastAlert event: {0}"
+alert_subject_args:
+- example.eventid
+
+alert_text: "Title{0} message:{1} Time:{2} ... ...."
+alert_text_args:
+- example.title
+- example.message
+- "@timestamp"
+
+smtp_host: smtp.example.com
+smtp_port: 465
+# the user and password of sender in smtp_auth.yml
+smtp_auth_file: /home/smtp_auth.yml
+email_reply_to: sender@example.com
+from_addr: sender@example.com
+smtp_ssl: true
+# (required, email specific)
+# a list of email addresses to send alerts to
+email:
+- "recipient@example.com"
