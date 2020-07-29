@@ -10,6 +10,6 @@
 ## 2. 运行
 ```shell
 docker run --name elastalert-docker \
-    -v `PWD`:/home/ \
+    -v `pwd`:/home/ \
     -d shuhanghang/elastalert-docker:1.0
 ```
