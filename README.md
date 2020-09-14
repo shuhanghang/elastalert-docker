@@ -3,7 +3,7 @@
 以配置邮件报警为例
 + git clone https://github.com/shuhanghang/elastalert-docker.git
 + cd elastalert-docker
-+ 修改config.yml中的es配置，容器中默认规则文件夹位置为/home/rules
++ 修改config.yml中的es配置
 + 修改rules目录下的规则文件(rules目录下可存在多个rule文件)
 + 修改smtp_auth文件填写发邮人用户名及密码
 + 根据需要修改config、rules文件其他参数
