@@ -1,6 +1,6 @@
 基于[elastalert](https://github.com/Yelp/elastalert)0.2.4 [python:3.6-alpine](https://hub.docker.com/_/python)构建
 ## 1. 配置
-以配置邮件报警为例
+邮件报警
 + git clone https://github.com/shuhanghang/elastalert-docker.git
 + cd elastalert-docker
 + 修改config.yml中的es配置
